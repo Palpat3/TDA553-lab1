@@ -5,11 +5,15 @@ public abstract class Vehicle {
     public double currentSpeed;
     public Color color;
     public String vehicleType;
+    public int x;
+    public int y;
 
 
-    public Vehicle(String vehicleType, Color color){
+    public Vehicle(String vehicleType, Color color, int x, int y){
         this.vehicleType = vehicleType;
         this.color = color;
+        this.x = x;
+        this.y = y;
 
     }
 
@@ -33,6 +37,21 @@ public abstract class Vehicle {
 	    currentSpeed = 0;
     }
 
+    public void setX(int NewX){
+        this.x = NewX;
+    }
+        
+    public void setY(int NewY){
+        this.y = NewY;
+    }
+
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY(){
+        return this.y;
+    }
     
     public abstract double speedFactor();
     
