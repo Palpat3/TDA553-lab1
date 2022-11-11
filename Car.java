@@ -5,9 +5,9 @@ public abstract class Car extends Vehicle{
     public double enginePower;
     public String modelName;
 
-    public Car(int nrDoors, Color color, double enginePower, String modelName, String vehicleType){
+    public Car(int nrDoors, Color color, double enginePower, String modelName, String vehicleType, int x, int y){
 
-        super(vehicleType, color);
+        super(vehicleType, color, x, y);
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
