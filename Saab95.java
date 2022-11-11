@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95{
+public class Saab95 extends Car{
 
     public boolean turboOn;
     public int nrDoors; // Number of doors on the car
@@ -10,12 +10,9 @@ public class Saab95{
     public String modelName; // The car model name
     
     public Saab95(){
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
+        super(2, Color.red, 125, "Saab95", "Car");
 	    turboOn = false;
-        modelName = "Saab95";
-        stopEngine();
+        stopVehicle();
     }
     
     public int getNrDoors(){
@@ -35,14 +32,6 @@ public class Saab95{
 
     public void setColor(Color clr){
 	    color = clr;
-    }
-
-    public void startEngine(){
-	    currentSpeed = 0.1;
-    }
-
-    public void stopEngine(){
-	    currentSpeed = 0;
     }
 
     public void setTurboOn(){
