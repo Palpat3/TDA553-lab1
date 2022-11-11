@@ -7,10 +7,9 @@ public abstract class Vehicle {
     public String vehicleType;
 
 
-    public Vehicle(String vehicleType, Color color, double currentSpeed){
+    public Vehicle(String vehicleType, Color color){
         this.vehicleType = vehicleType;
         this.color = color;
-        this.currentSpeed = currentSpeed;
 
     }
 
@@ -24,6 +23,14 @@ public abstract class Vehicle {
 
     public void setColor(Color clr){
 	    color = clr;
+    }
+
+    public void startVehicle(){
+	    currentSpeed = 0.1;
+    }
+
+    public void stopVehicle(){
+	    currentSpeed = 0;
     }
 
     
