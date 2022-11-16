@@ -1,13 +1,15 @@
+package set;
+
 import java.awt.*;
 
 public abstract class Vehicle implements Movable {
     
-    public double currentSpeed;
-    public Color color;
-    public String vehicleType;
-    public int x;
-    public int y;
-    public int dir;
+    private double currentSpeed;
+    private Color color;
+    private final String vehicleType;
+    private int x;
+    private int y;
+    private int dir;
 
 
     public Vehicle(String vehicleType, Color color, int x, int y, int dir){
@@ -21,6 +23,10 @@ public abstract class Vehicle implements Movable {
 
     public double getCurrentSpeed(){
         return currentSpeed;
+    }
+
+    public void setCurrentSpeed(double newCurrentSpeed){
+        currentSpeed = newCurrentSpeed;
     }
 
     public Color getColor(){
@@ -37,6 +43,10 @@ public abstract class Vehicle implements Movable {
 
     public void stopVehicle(){
 	    currentSpeed = 0;
+    }
+
+    public String getVehicleType(){
+        return vehicleType;
     }
 
     public void move(){
@@ -84,6 +94,14 @@ public abstract class Vehicle implements Movable {
 
     public int getY(){
         return this.y;
+    }
+
+    public int getDir(){
+        return dir;
+    }
+
+    public void setDir(int newDir){
+        dir = newDir;
     }
 
     
