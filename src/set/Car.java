@@ -27,14 +27,23 @@ public abstract class Car extends Vehicle{
     public String getModelName(){
         return modelName;
     }
-    // TODO fix this method according to lab pm
+    // TODO fix this method according to lab pm 
+    // TODO double check if this is correct
     public void gas(double amount){
-        incrementSpeed(amount);
+        if ((amount > 0) && (amount < 1)){
+            incrementSpeed(amount);
+        }else{
+            throw new IllegalArgumentException("must be a double between 0 and 1");
+        }
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        if((amount > 0) && (amount < 1)){
+            decrementSpeed(amount);
+        }else{
+            throw new IllegalArgumentException("must be a double between 0 and 1");
+        }
     }
     
 }

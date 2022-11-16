@@ -18,7 +18,6 @@ public abstract class Vehicle implements Movable {
         this.x = x;
         this.y = y;
         this.dir = dir;
-
     }
 
     public double getCurrentSpeed(){
@@ -26,7 +25,11 @@ public abstract class Vehicle implements Movable {
     }
 
     public void setCurrentSpeed(double newCurrentSpeed){
-        currentSpeed = newCurrentSpeed;
+        if (newCurrentSpeed < 0){
+            throw new IllegalArgumentException("can't have a negative speed!");
+        }else{
+            currentSpeed = newCurrentSpeed;
+        }
     }
 
     public Color getColor(){
@@ -114,7 +117,5 @@ public abstract class Vehicle implements Movable {
     
 
     public abstract void decrementSpeed(double amount);
-        
-    
 
 }
