@@ -19,6 +19,14 @@ public abstract class Car extends Vehicle{
     public int getNrDoors(){
         return nrDoors;
     }
+    @Override
+    public void setCurrentSpeed(double newCurrentSpeed){
+        if (newCurrentSpeed <= enginePower){
+            super.setCurrentSpeed(newCurrentSpeed);
+        }else{
+            System.out.println("speed is too high");
+        }
+    }
 
     public double getEnginePower(){
         return enginePower;
@@ -33,7 +41,7 @@ public abstract class Car extends Vehicle{
         if ((amount > 0) && (amount < 1)){
             incrementSpeed(amount);
         }else{
-            throw new IllegalArgumentException("must be a double between 0 and 1");
+            System.out.println("must be a double between 0.0 and 1.0");
         }
     }
 
@@ -42,8 +50,10 @@ public abstract class Car extends Vehicle{
         if((amount > 0) && (amount < 1)){
             decrementSpeed(amount);
         }else{
-            throw new IllegalArgumentException("must be a double between 0 and 1");
+            System.out.println("must be a double between 0 and 1");
         }
     }
     
-}
+    
+} // TODO need to fix the sanity check were currentSpeed cant be higer than enginePower
+

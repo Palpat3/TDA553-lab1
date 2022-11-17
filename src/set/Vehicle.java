@@ -107,7 +107,7 @@ public abstract class Vehicle implements Movable {
         dir = newDir;
     }
 
-    
+
     public abstract double speedFactor();
     
 
