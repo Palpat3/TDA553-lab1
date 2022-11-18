@@ -30,20 +30,19 @@ public class Volvo240Test{
     }
 
     @Test 
-    public void Volvo240_should_not_gas_outside_given_span(){
+    public void Volvo240_should_not_gas_above_enginePower(){
         Volvo240 testCar = new Volvo240();
-        assertThrows(IllegalArgumentException.class, () -> {
-            testCar.gas(1.1);
-        });
-       
+        testCar.setCurrentSpeed(150);
+        assertTrue(testCar.getCurrentSpeed() == 0);
+        
     }
     @Test 
-    public void Volvo240_should_not_brake_outside_given_span(){
+    public void Volvo240_should_not_brake_and_get_negative_speed(){
         Volvo240 testCar = new Volvo240();
-        assertThrows(IllegalArgumentException.class, () -> {
-            testCar.brake(1.1);
-        });
+        testCar.brake(0.9);
+        assertTrue(testCar.getCurrentSpeed() == 0);
     }
+
 
 
     

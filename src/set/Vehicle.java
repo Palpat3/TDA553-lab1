@@ -108,7 +108,7 @@ public abstract class Vehicle implements Movable {
     }
 
 
-    public abstract double speedFactor();
+    //public abstract double speedFactor();
     
 
 

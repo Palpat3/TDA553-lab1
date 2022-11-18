@@ -25,24 +25,18 @@ public class Saab95 extends Car{
         return turboOn;
     }
     
-    public double speedFactor(){
+    private double speedFactor(){
         double turbo = 1;
         if (isTurboOn()) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;
     }
 
     public void incrementSpeed(double amount){
-        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 
     public void decrementSpeed(double amount){
-        if ((speedFactor() * amount) < getCurrentSpeed()){
-            setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
-        }else{
-            //setCurrentSpeed(0.0);
-            System.out.println("cant have a negative speed");
-            //TODO I have no clue if this a valid way to solve the sanity check
-        }
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
     }
     
     
