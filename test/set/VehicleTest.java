@@ -40,8 +40,4 @@ public class VehicleTest{
         testVehicle.stopVehicle();
         assertTrue(testVehicle.getCurrentSpeed() == 0);
     }
-
-
-
-    
 }

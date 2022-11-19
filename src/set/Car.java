@@ -19,6 +19,11 @@ public abstract class Car extends Vehicle{
     public int getNrDoors(){
         return nrDoors;
     }
+
+    public String getModelName(){
+        return modelName;
+    }
+
     @Override
     public void setCurrentSpeed(double newCurrentSpeed){
         if (newCurrentSpeed <= enginePower){
@@ -31,12 +36,7 @@ public abstract class Car extends Vehicle{
     public double getEnginePower(){
         return enginePower;
     }
-
-    public String getModelName(){
-        return modelName;
-    }
-    // TODO fix this method according to lab pm 
-    // TODO double check if this is correct
+    
     public void gas(double amount){
         if ((amount > 0) && (amount < 1)){
             incrementSpeed(amount);
@@ -45,7 +45,6 @@ public abstract class Car extends Vehicle{
         }
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if((amount > 0) && (amount < 1)){
             decrementSpeed(amount);
@@ -53,7 +52,4 @@ public abstract class Car extends Vehicle{
             System.out.println("must be a double between 0 and 1");
         }
     }
-    
-    
-} // TODO need to fix the sanity check were currentSpeed cant be higer than enginePower
-
+} 

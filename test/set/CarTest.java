@@ -25,4 +25,5 @@ public class CarTest{
         assertTrue(testCar.getCurrentSpeed() == 0);
         assertTrue(testCar2.getCurrentSpeed() == 0);
     }
+    
 }

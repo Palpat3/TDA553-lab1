@@ -14,5 +14,4 @@ public class MovableTest{
         assertTrue(testVehicle.getX() == -10);
         assertTrue(testVehicle.getY() == 20);
     }
-     
 }

@@ -8,7 +8,6 @@ public class Volvo240Test{
     public void Volvo240_should_not_be_abstract(){
         Volvo240 testCar = new Volvo240();
         assertTrue(testCar instanceof Volvo240);
-    
     }
 
     @Test
@@ -42,9 +41,4 @@ public class Volvo240Test{
         testCar.decrementSpeed(1000);
         assertTrue(testCar.getCurrentSpeed() == 0);
     }
-
-
-
-    
-
 }

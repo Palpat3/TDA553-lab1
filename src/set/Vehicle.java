@@ -27,7 +27,8 @@ public abstract class Vehicle implements Movable {
 
     public void setCurrentSpeed(double newCurrentSpeed){
         if (newCurrentSpeed < 0){
-            throw new IllegalArgumentException("can't have a negative speed!");
+            System.out.println("Can't have a negative speed");
+            //throw new IllegalArgumentException("can't have a negative speed!");
         }else{
             currentSpeed = newCurrentSpeed;
         }
@@ -70,23 +71,17 @@ public abstract class Vehicle implements Movable {
 
         }else if(modDir == 3){
             this.x -= Math.round(this.currentSpeed);
-
         }
-
     }
 
     public void turnLeft(){
         this.dir -= 1;
-        //this.dir = this.dir % 4;
         move();
-
     }
 
     public void turnRight(){
         this.dir += 1;
-        //this.dir = this.dir % 4;
         move();
-
     }
 
     public void setX(int newXCord){
@@ -123,5 +118,4 @@ public abstract class Vehicle implements Movable {
     
 
     public abstract void decrementSpeed(double amount);
-
 }
