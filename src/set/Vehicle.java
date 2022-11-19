@@ -10,6 +10,7 @@ public abstract class Vehicle implements Movable {
     private int x;
     private int y;
     private int dir;
+    private int modDir;
 
 
     public Vehicle(String vehicleType, Color color, int x, int y, int dir){
@@ -52,17 +53,22 @@ public abstract class Vehicle implements Movable {
         return vehicleType;
     }
 
+    private void dirConverter(int dir){
+        modDir = (dir % 4 + 4) % 4;
+    }
+
     public void move(){
-        if (this.dir == 0){
+        dirConverter(this.dir);
+        if (modDir == 0){
             this.y += Math.round(this.currentSpeed);
 
-        }else if(this.dir == 1){
+        }else if(modDir == 1){
             this.x += Math.round(this.currentSpeed);
 
-        }else if(this.dir == 2){
+        }else if(modDir == 2){
             this.y -= Math.round(this.currentSpeed);
 
-        }else if(this.dir == 3){
+        }else if(modDir == 3){
             this.x -= Math.round(this.currentSpeed);
 
         }
@@ -71,14 +77,14 @@ public abstract class Vehicle implements Movable {
 
     public void turnLeft(){
         this.dir -= 1;
-        this.dir = this.dir % 4;
+        //this.dir = this.dir % 4;
         move();
 
     }
 
     public void turnRight(){
         this.dir += 1;
-        this.dir = this.dir % 4;
+        //this.dir = this.dir % 4;
         move();
 
     }

@@ -32,14 +32,14 @@ public class Volvo240Test{
     @Test 
     public void Volvo240_should_not_gas_above_enginePower(){
         Volvo240 testCar = new Volvo240();
-        testCar.setCurrentSpeed(150);
-        assertTrue(testCar.getCurrentSpeed() == 0);
+        testCar.incrementSpeed(1000);
+        assertTrue(testCar.getCurrentSpeed() == testCar.getEnginePower());
         
     }
     @Test 
     public void Volvo240_should_not_brake_and_get_negative_speed(){
         Volvo240 testCar = new Volvo240();
-        testCar.brake(0.9);
+        testCar.decrementSpeed(1000);
         assertTrue(testCar.getCurrentSpeed() == 0);
     }
 
