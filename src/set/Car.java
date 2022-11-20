@@ -25,11 +25,13 @@ public abstract class Car extends Vehicle{
     }
 
     @Override
-    public void setCurrentSpeed(double newCurrentSpeed){
-        if (newCurrentSpeed <= enginePower){
-            super.setCurrentSpeed(newCurrentSpeed);
+    protected void setCurrentSpeed(double newCurrentSpeed){
+        if (newCurrentSpeed > enginePower){
+            throw new IllegalArgumentException("speed is too high");
+        }else if (newCurrentSpeed < 0){
+            throw new IllegalArgumentException("Can't have negative speed");  
         }else{
-            System.out.println("speed is too high");
+            super.setCurrentSpeed(newCurrentSpeed); 
         }
     }
 
@@ -37,11 +39,19 @@ public abstract class Car extends Vehicle{
         return enginePower;
     }
 
+    private void incrementSpeed(double amount){
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower));
+    }
+
+    private void decrementSpeed(double amount){
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
+
     protected void gas(double amount){
         if ((amount > 0) && (amount < 1)){
             incrementSpeed(amount);
         }else{
-            System.out.println("must be a double between 0.0 and 1.0");
+            throw new IllegalArgumentException("must be a double between 0.0 and 1.0");
         }
     }
 
@@ -49,7 +59,7 @@ public abstract class Car extends Vehicle{
         if((amount > 0) && (amount < 1)){
             decrementSpeed(amount);
         }else{
-            System.out.println("must be a double between 0 and 1");
+            throw new IllegalArgumentException("must be a double between 0 and 1");
         }
     }
 } 

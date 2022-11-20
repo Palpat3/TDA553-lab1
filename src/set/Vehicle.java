@@ -9,16 +9,16 @@ public abstract class Vehicle implements Movable {
     private final String vehicleType;
     private int x;
     private int y;
-    private int dir;
-    private int modDir;
+    private int direction;
+    
 
 
-    public Vehicle(String vehicleType, Color color, int x, int y, int dir){
+    public Vehicle(String vehicleType, Color color, int x, int y, int direction){
         this.vehicleType = vehicleType;
         this.color = color;
         this.x = x;
         this.y = y;
-        this.dir = dir;
+        this.direction = direction;
     }
 
     protected double getCurrentSpeed(){
@@ -26,19 +26,11 @@ public abstract class Vehicle implements Movable {
     }
 
     protected void setCurrentSpeed(double newCurrentSpeed){
-        if (newCurrentSpeed < 0){
-            System.out.println("Can't have a negative speed");
-        }else{
-            currentSpeed = newCurrentSpeed;
-        }
+        currentSpeed = newCurrentSpeed;
     }
 
     protected Color getColor(){
         return color;
-    }
-
-    protected void setColor(Color clr){
-	    color = clr;
     }
 
     protected void startVehicle(){
@@ -53,63 +45,47 @@ public abstract class Vehicle implements Movable {
         return vehicleType;
     }
 
-    private void dirConverter(int dir){
-        modDir = (dir % 4 + 4) % 4;
+    private void directionConverter(){
+        direction = (direction % 4 + 4) % 4;
     }
 
     public void move(){
-        dirConverter(this.dir);
-        if (modDir == 0){
-            this.y += Math.round(this.currentSpeed);
+        directionConverter();
+        if (direction == 0){
+            y += Math.round(this.currentSpeed);
 
-        }else if(modDir == 1){
-            this.x += Math.round(this.currentSpeed);
+        }else if(direction == 1){
+            x += Math.round(this.currentSpeed);
 
-        }else if(modDir == 2){
-            this.y -= Math.round(this.currentSpeed);
+        }else if(direction == 2){
+            y -= Math.round(this.currentSpeed);
 
-        }else if(modDir == 3){
-            this.x -= Math.round(this.currentSpeed);
+        }else if(direction == 3){
+            x -= Math.round(this.currentSpeed);
         }
     }
 
     public void turnLeft(){
-        this.dir -= 1;
+        direction -= 1;
         move();
     }
 
     public void turnRight(){
-        this.dir += 1;
+        direction += 1;
         move();
     }
 
-    protected void setX(int newXCord){
-        this.x = newXCord;
-    }
-
     protected int getX(){
-        return this.x;
-    }
-
-    protected void setY(int newYcord){
-        this.y = newYcord;
+        return x;
     }
 
     protected int getY(){
-        return this.y;
+        return y;
     }
 
-    protected int getDir(){
-        return dir;
+    protected int getDirection(){
+        return direction;
     }
 
-    protected void setDir(int newDir){
-        dir = newDir;
-    }
-
-    public abstract void incrementSpeed(double amount);
-        
-    
-
-    public abstract void decrementSpeed(double amount);
+    protected abstract double speedFactor();
 }

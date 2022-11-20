@@ -8,14 +8,14 @@ public class VehicleTest{
     public void Vehicle_should_be_able_to_turn_left(){
         Saab95 testVehicle = new Saab95();
         testVehicle.turnLeft();
-        assertTrue(testVehicle.getDir() == -1);
+        assertTrue(testVehicle.getDirection() == 3);
     }
 
     @Test
     public void Vehicle_should_be_able_to_turn_right(){
         Saab95 testVehicle = new Saab95();
         testVehicle.turnRight();
-        assertTrue(testVehicle.getDir() == 1);
+        assertTrue(testVehicle.getDirection() == 1);
     }
 
     @Test
