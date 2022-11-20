@@ -32,9 +32,11 @@ public abstract class Car extends Vehicle{
     protected void setCurrentSpeed(double newCurrentSpeed){
         if (newCurrentSpeed > enginePower){
             throw new IllegalArgumentException("speed is too high");
-        }else if (newCurrentSpeed < 0){
+        }
+        else if (newCurrentSpeed < 0){
             throw new IllegalArgumentException("Can't have negative speed");  
-        }else{
+        }
+        else{
             super.setCurrentSpeed(newCurrentSpeed); 
         }
     }
