@@ -21,36 +21,35 @@ public abstract class Vehicle implements Movable {
         this.dir = dir;
     }
 
-    public double getCurrentSpeed(){
+    protected double getCurrentSpeed(){
         return currentSpeed;
     }
 
-    public void setCurrentSpeed(double newCurrentSpeed){
+    protected void setCurrentSpeed(double newCurrentSpeed){
         if (newCurrentSpeed < 0){
             System.out.println("Can't have a negative speed");
-            //throw new IllegalArgumentException("can't have a negative speed!");
         }else{
             currentSpeed = newCurrentSpeed;
         }
     }
 
-    public Color getColor(){
+    protected Color getColor(){
         return color;
     }
 
-    public void setColor(Color clr){
+    protected void setColor(Color clr){
 	    color = clr;
     }
 
-    public void startVehicle(){
+    protected void startVehicle(){
 	    currentSpeed = 0.1;
     }
 
-    public void stopVehicle(){
+    protected void stopVehicle(){
 	    currentSpeed = 0;
     }
 
-    public String getVehicleType(){
+    protected String getVehicleType(){
         return vehicleType;
     }
 
@@ -84,34 +83,29 @@ public abstract class Vehicle implements Movable {
         move();
     }
 
-    public void setX(int newXCord){
+    protected void setX(int newXCord){
         this.x = newXCord;
     }
 
-    public int getX(){
+    protected int getX(){
         return this.x;
     }
 
-    public void setY(int newYcord){
+    protected void setY(int newYcord){
         this.y = newYcord;
     }
 
-    public int getY(){
+    protected int getY(){
         return this.y;
     }
 
-    public int getDir(){
+    protected int getDir(){
         return dir;
     }
 
-    public void setDir(int newDir){
+    protected void setDir(int newDir){
         dir = newDir;
     }
-
-
-    //public abstract double speedFactor();
-    
-
 
     public abstract void incrementSpeed(double amount);
         
