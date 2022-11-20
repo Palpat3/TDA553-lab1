@@ -1,0 +1,19 @@
+Explain how you chose the inheritance hierarchy in Task 1, making reference to the Open-Closed Principle.
+
+Vi har skapat två abstrakta klasser, den ena döptes till "Vehicle" och innehöll allt som är gemensamt för alla typer av fordon. Den andra döptes till "Car" och 
+innehåller alla gemensamma attribut och funktionalitet som hör till bilar. Olikheterna mellan de olika bilarna separerades som attribut och metoder i olika subklasser.
+Med denna struktur så är det lätt att skapa nya fordon samt skapa nya typer av bilar enligt OCP. Vi valde att försöka hålla så många attribut och metoder privata som 
+möjligt enlig Principle of least knowledge. Det vill säga metoder och attribut som enbart användes inom klassen hölls privata och metoder och attribut som enbart den 
+som skriver funktionalitet i klassen bör känna till sattes som protected.
+
+Explain how you implemented each of the sanity checks in Task 4.
+
+För gas och brake så använde vi oss av en if-sats vars villkor kollar argumentets värde. if (amount <= 1 && amount >= 0). Om argumentet är utanför detta intervall 
+så kastar vi ett exception för att vi anser att om man ger ett felaktigt värde så ska koden ej kunna köras. En annan möjlighet hade varit att metoden inte gör något 
+utan koden fortsätter oförändrad. Detta anser vi dock vara problematiskt för det kan leda till "silent bugs" vilket gör det svårt att se vad det är som har gått fel.
+
+Vi använder oss av math.min och math.max för att begränsa värdena som increment och decrement speed kan använda sig av. Gas metoden kan inte sätta currentSpeed till 
+större än enginePower och brake kan inte sätta den till lägre än 0.
+
+Eftersom att speedFactor * amount alltid kommer vara positiv i incrementSpeed till följd av sanity check 1, kan inte currentSpeed minska. Samma sak gäller för brake, 
+då currentSpeed inte kan öka.
