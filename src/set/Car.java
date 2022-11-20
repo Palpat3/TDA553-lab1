@@ -16,11 +16,11 @@ public abstract class Car extends Vehicle{
         stopVehicle();
     }
     
-    public int getNrDoors(){
+    protected int getNrDoors(){
         return nrDoors;
     }
 
-    public String getModelName(){
+    protected String getModelName(){
         return modelName;
     }
 
@@ -33,11 +33,11 @@ public abstract class Car extends Vehicle{
         }
     }
 
-    public double getEnginePower(){
+    protected double getEnginePower(){
         return enginePower;
     }
-    
-    public void gas(double amount){
+
+    protected void gas(double amount){
         if ((amount > 0) && (amount < 1)){
             incrementSpeed(amount);
         }else{
@@ -45,7 +45,7 @@ public abstract class Car extends Vehicle{
         }
     }
 
-    public void brake(double amount){
+    protected void brake(double amount){
         if((amount > 0) && (amount < 1)){
             decrementSpeed(amount);
         }else{
