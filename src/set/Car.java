@@ -20,6 +20,10 @@ public abstract class Car extends Vehicle{
         return nrDoors;
     }
 
+    protected double getEnginePower(){
+        return enginePower;
+    }
+
     protected String getModelName(){
         return modelName;
     }
@@ -35,10 +39,6 @@ public abstract class Car extends Vehicle{
         }
     }
 
-    protected double getEnginePower(){
-        return enginePower;
-    }
-
     private void incrementSpeed(double amount){
         setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower));
     }
@@ -50,7 +50,8 @@ public abstract class Car extends Vehicle{
     protected void gas(double amount){
         if ((amount > 0) && (amount < 1)){
             incrementSpeed(amount);
-        }else{
+        }
+        else{
             throw new IllegalArgumentException("must be a double between 0.0 and 1.0");
         }
     }
@@ -58,7 +59,8 @@ public abstract class Car extends Vehicle{
     protected void brake(double amount){
         if((amount > 0) && (amount < 1)){
             decrementSpeed(amount);
-        }else{
+        }
+        else{
             throw new IllegalArgumentException("must be a double between 0 and 1");
         }
     }

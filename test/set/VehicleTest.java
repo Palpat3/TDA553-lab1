@@ -6,38 +6,64 @@ import org.junit.Test;
 public class VehicleTest{
     @Test
     public void Vehicle_should_be_able_to_turn_left(){
-        Saab95 testVehicle = new Saab95();
-        testVehicle.turnLeft();
-        assertTrue(testVehicle.getDirection() == 3);
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+
+        saab.turnLeft();
+        volvo.turnLeft();
+
+        assertTrue(saab.getDirection() == 3);
+        assertTrue(volvo.getDirection() == 3);
     }
 
     @Test
     public void Vehicle_should_be_able_to_turn_right(){
-        Saab95 testVehicle = new Saab95();
-        testVehicle.turnRight();
-        assertTrue(testVehicle.getDirection() == 1);
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+
+        saab.turnRight();
+        volvo.turnRight();
+
+        assertTrue(saab.getDirection() == 1);
+        assertTrue(volvo.getDirection() == 1);
     }
 
     @Test
     public void Vehicle_should_be_able_to_move(){
-        Saab95 testVehicle = new Saab95();
-        testVehicle.setCurrentSpeed(10);
-        testVehicle.move();
-        assertTrue(testVehicle.getY() == 10);
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+
+        saab.setCurrentSpeed(10);
+        volvo.setCurrentSpeed(10);
+
+        saab.move();
+        volvo.move();
+
+        assertTrue(saab.getY() == 10);
+        assertTrue(volvo.getY() == 10);
     }
 
     @Test
     public void Vehicle_should_be_able_to_turn_on(){
-        Saab95 testVehicle = new Saab95();
-        testVehicle.startVehicle();
-        assertTrue(testVehicle.getCurrentSpeed() == 0.1);
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+
+        saab.startVehicle();
+        volvo.startVehicle();
+
+        assertTrue(saab.getCurrentSpeed() == 0.1);
+        assertTrue(volvo.getCurrentSpeed() == 0.1);
     }
 
     @Test
     public void Vehicle_should_be_able_to_turn_off(){
-        Saab95 testVehicle = new Saab95();
-        testVehicle.startVehicle();
-        testVehicle.stopVehicle();
-        assertTrue(testVehicle.getCurrentSpeed() == 0);
+        Saab95 saab = new Saab95();
+        Volvo240 volvo = new Volvo240();
+
+        saab.stopVehicle();
+        volvo.stopVehicle();
+
+        assertTrue(saab.getCurrentSpeed() == 0);
+        assertTrue(volvo.getCurrentSpeed() == 0);
     }
 }

@@ -33,6 +33,22 @@ public abstract class Vehicle implements Movable {
         return color;
     }
 
+    protected String getVehicleType(){
+        return vehicleType;
+    }
+
+    protected int getX(){
+        return x;
+    }
+
+    protected int getY(){
+        return y;
+    }
+
+    protected int getDirection(){
+        return direction;
+    }
+
     protected void startVehicle(){
 	    currentSpeed = 0.1;
     }
@@ -41,26 +57,20 @@ public abstract class Vehicle implements Movable {
 	    currentSpeed = 0;
     }
 
-    protected String getVehicleType(){
-        return vehicleType;
-    }
-
-    private void directionConverter(){
-        direction = (direction % 4 + 4) % 4;
-    }
+    
 
     public void move(){
         directionConverter();
         if (direction == 0){
             y += Math.round(this.currentSpeed);
-
-        }else if(direction == 1){
+        }
+        else if(direction == 1){
             x += Math.round(this.currentSpeed);
-
-        }else if(direction == 2){
+        }
+        else if(direction == 2){
             y -= Math.round(this.currentSpeed);
-
-        }else if(direction == 3){
+        }
+        else if(direction == 3){
             x -= Math.round(this.currentSpeed);
         }
     }
@@ -75,16 +85,8 @@ public abstract class Vehicle implements Movable {
         move();
     }
 
-    protected int getX(){
-        return x;
-    }
-
-    protected int getY(){
-        return y;
-    }
-
-    protected int getDirection(){
-        return direction;
+    private void directionConverter(){
+        direction = (direction % 4 + 4) % 4;
     }
 
     protected abstract double speedFactor();
