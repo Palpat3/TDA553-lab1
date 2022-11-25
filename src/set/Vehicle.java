@@ -4,37 +4,41 @@ import java.awt.*;
 
 public abstract class Vehicle implements Movable {
     
+    private int nrDoors;
+    private double enginePower;    
     private double currentSpeed;
     private Color color;
-    private final String vehicleType;
+    private String modelName;
     private int x;
     private int y;
-    private int direction;
+    private int direction = 0;
     
 
 
-    public Vehicle(String vehicleType, Color color, int x, int y, int direction){
-        this.vehicleType = vehicleType;
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y){
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
         this.color = color;
+        this.modelName = modelName;
         this.x = x;
         this.y = y;
-        this.direction = direction;
+        stopVehicle();  
     }
 
-    protected double getCurrentSpeed(){
-        return currentSpeed;
+    protected int getNrDoors(){
+        return nrDoors;
     }
 
-    protected void setCurrentSpeed(double newCurrentSpeed){
-        currentSpeed = newCurrentSpeed;
+    protected double getEnginePower(){
+        return enginePower;
     }
 
     protected Color getColor(){
         return color;
     }
 
-    protected String getVehicleType(){
-        return vehicleType;
+    protected String getModelName(){
+        return modelName;
     }
 
     protected int getX(){
@@ -43,6 +47,14 @@ public abstract class Vehicle implements Movable {
 
     protected int getY(){
         return y;
+    }
+
+    protected double getCurrentSpeed(){
+        return currentSpeed;
+    }
+
+    protected void setCurrentSpeed(double newCurrentSpeed){
+        currentSpeed = newCurrentSpeed;
     }
 
     protected int getDirection(){
@@ -56,8 +68,6 @@ public abstract class Vehicle implements Movable {
     protected void stopVehicle(){
 	    currentSpeed = 0;
     }
-
-    
 
     public void move(){
         directionConverter();
@@ -87,6 +97,32 @@ public abstract class Vehicle implements Movable {
 
     private void directionConverter(){
         direction = (direction % 4 + 4) % 4;
+    }
+
+    private void incrementSpeed(double amount){
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower));
+    }
+
+    private void decrementSpeed(double amount){
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
+
+    protected void gas(double amount){
+        if ((amount > 0) && (amount < 1)){
+            incrementSpeed(amount);
+        }
+        else{
+            throw new IllegalArgumentException("must be a double between 0.0 and 1.0");
+        }
+    }
+
+    protected void brake(double amount){
+        if((amount > 0) && (amount < 1)){
+            decrementSpeed(amount);
+        }
+        else{
+            throw new IllegalArgumentException("must be a double between 0 and 1");
+        }
     }
 
     protected abstract double speedFactor();
