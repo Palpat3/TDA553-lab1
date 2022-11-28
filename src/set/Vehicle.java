@@ -61,11 +61,11 @@ public abstract class Vehicle implements Movable {
         return direction;
     }
 
-    protected void startVehicle(){
+    public void startVehicle(){
 	    currentSpeed = 0.1;
     }
 
-    protected void stopVehicle(){
+    public void stopVehicle(){
 	    currentSpeed = 0;
     }
 
