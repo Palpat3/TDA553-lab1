@@ -21,5 +21,7 @@ public abstract class Car extends Vehicle{
     public boolean isCarOnTruck() {
         return carOnTruck;
     }
+
     
-} 
+    
+}
