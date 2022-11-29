@@ -1,14 +1,15 @@
 package set;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarTransporter extends Truck {
 
     
     private boolean rampUp = true;
     private final int maxCarsOnTruck = 5;
-    private ArrayList<Car> CarsOnTruck = new ArrayList<>(maxCarsOnTruck);
+    private List<Car> carsOnTruck = new ArrayList<>(maxCarsOnTruck);
     private final double minDistanceToDriveOnTruck = 5;
 
     public CarTransporter(){
@@ -34,14 +35,14 @@ public class CarTransporter extends Truck {
     }
 
     public void DriveCarOnTruck(Car car){
-        if (!rampUp && (CarsOnTruck.size() < maxCarsOnTruck) && !car.isCarOnTruck() && CanCarDriveOn(car)){
-            CarsOnTruck.add(car);
+        if (!rampUp && (carsOnTruck.size() < maxCarsOnTruck) && !car.isCarOnTruck() && CanCarDriveOn(car)){
+            carsOnTruck.add(car);
             car.GetCarOnTruck();
         }
         else if(rampUp){
             throw new ArithmeticException("Platform has to be down for cars to drive on");  
         }
-        else if(CarsOnTruck.size() == 5){
+        else if(carsOnTruck.size() == 5){
             throw new ArithmeticException("Car transporter already full");
         }
         else if(!CanCarDriveOn(car)){
@@ -52,8 +53,8 @@ public class CarTransporter extends Truck {
     
 
     public void RemoveCarFromTruck(Car car){
-        if (!rampUp && CarsOnTruck.size() > 0 && car.isCarOnTruck()){
-            CarsOnTruck.remove(CarsOnTruck.indexOf(car));
+        if (!rampUp && carsOnTruck.size() > 0 && car.isCarOnTruck()){
+            carsOnTruck.remove(car);
             car.GetCarOffTruck();
         }
         else if(rampUp){
@@ -71,13 +72,13 @@ public class CarTransporter extends Truck {
     }
 
     private void MatchCarsAndTransportSpeed(){
-        for (Car car : CarsOnTruck){
+        for (Car car : carsOnTruck){
             car.setCurrentSpeed(this.getCurrentSpeed());
         }
     }
 
     private void MoveCarInSameDirection(){
-        for (Car car : CarsOnTruck){
+        for (Car car : carsOnTruck){
             if(car.getDirection() == this.getDirection()){
                 car.move();
             }

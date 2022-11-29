@@ -59,7 +59,7 @@ public abstract class Vehicle implements Movable {
         }else if (newCurrentSpeed < 0){
             throw new IllegalArgumentException("Can't have negative speed");  
         }else{
-            currentSpeed = (newCurrentSpeed); 
+            currentSpeed = newCurrentSpeed; 
         }
     }
 
