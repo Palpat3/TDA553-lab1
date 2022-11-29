@@ -54,7 +54,13 @@ public abstract class Vehicle implements Movable {
     }
 
     protected void setCurrentSpeed(double newCurrentSpeed){
-        currentSpeed = newCurrentSpeed;
+        if (newCurrentSpeed > enginePower){
+            throw new IllegalArgumentException("speed is too high");
+        }else if (newCurrentSpeed < 0){
+            throw new IllegalArgumentException("Can't have negative speed");  
+        }else{
+            currentSpeed = (newCurrentSpeed); 
+        }
     }
 
     protected int getDirection(){
