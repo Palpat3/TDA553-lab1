@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarTransporter extends Truck {
+public class CarTransporter extends Truck implements Loadable{
 
     
     private boolean rampUp = true;
@@ -34,8 +34,8 @@ public class CarTransporter extends Truck {
         return rampUp;
     }
 
-    public void DriveCarOnTruck(Car car){
-        if (!rampUp && (carsOnTruck.size() < maxCarsOnTruck) && !car.isCarOnTruck() && CanCarDriveOn(car)){
+    public void LoadCar(Car car){
+        if (!rampUp && (carsOnTruck.size() < maxCarsOnTruck) && !car.isCarOnTruck() && IsCarCloseEnough(car)){
             carsOnTruck.add(car);
             car.GetCarOnTruck();
         }
@@ -45,14 +45,14 @@ public class CarTransporter extends Truck {
         else if(carsOnTruck.size() == 5){
             throw new ArithmeticException("Car transporter already full");
         }
-        else if(!CanCarDriveOn(car)){
+        else if(!IsCarCloseEnough(car)){
             throw new ArithmeticException("Car is too far away");
         }
         }
 
     
 
-    public void RemoveCarFromTruck(Car car){
+    public void RemoveCar(Car car){
         if (!rampUp && carsOnTruck.size() > 0 && car.isCarOnTruck()){
             carsOnTruck.remove(car);
             car.GetCarOffTruck();
@@ -65,27 +65,29 @@ public class CarTransporter extends Truck {
         }
     }
 
-    private boolean CanCarDriveOn(Car car){
+    public boolean IsCarCloseEnough(Car car){
         int xDiff = this.getX() - car.getX();
         int yDiff = this.getY() - car.getY();
         return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < minDistanceToDriveOnTruck;
     }
-
-    private void MatchCarsAndTransportSpeed(){
-        for (Car car : carsOnTruck){
-            car.setCurrentSpeed(this.getCurrentSpeed());
-        }
+    
+    /* Vill göra private men går ej med inteface */
+    public void SetPosition(Car car){
+        car.setX(getX());
+        car.setY(getY());
+        SetCarInSameDirection(car);
+    
+       
     }
 
-    private void MoveCarInSameDirection(){
-        for (Car car : carsOnTruck){
-            if(car.getDirection() == this.getDirection()){
-                car.move();
-            }
-            else{
-                car.turnLeft();
-            }
+    private void SetCarInSameDirection(Car car){
+        if(car.getDirection() == this.getDirection()){
+            car.move();
         }
+        else{
+            car.turnLeft();
+        }
+    
     }
 
 
@@ -93,9 +95,9 @@ public class CarTransporter extends Truck {
     public void move(){
         if (rampUp){
             super.move();
-            MatchCarsAndTransportSpeed();
-            MoveCarInSameDirection();
-            
+            for(Car car : carsOnTruck){
+               SetPosition(car); 
+            }
         }
         else{
             throw new ArithmeticException("Can't drive with the ramp down!");

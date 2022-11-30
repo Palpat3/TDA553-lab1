@@ -42,7 +42,7 @@ public class CarTransporterTest {
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.DriveCarOnTruck(volvo);
+            carTransporter.LoadCar(volvo);
         });
     }
 
@@ -58,14 +58,14 @@ public class CarTransporterTest {
 
         carTransporter.LowerRamp();
 
-        carTransporter.DriveCarOnTruck(volvo);
-        carTransporter.DriveCarOnTruck(volvo1);
-        carTransporter.DriveCarOnTruck(volvo2);
-        carTransporter.DriveCarOnTruck(volvo3);
-        carTransporter.DriveCarOnTruck(volvo4);
+        carTransporter.LoadCar(volvo);
+        carTransporter.LoadCar(volvo1);
+        carTransporter.LoadCar(volvo2);
+        carTransporter.LoadCar(volvo3);
+        carTransporter.LoadCar(volvo4);
 
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.DriveCarOnTruck(volvo5);
+            carTransporter.LoadCar(volvo5);
         });
     }
 
@@ -76,13 +76,13 @@ public class CarTransporterTest {
 
         carTransporter.LowerRamp();
 
-        carTransporter.DriveCarOnTruck(volvo);
+        carTransporter.LoadCar(volvo);
 
         carTransporter.LiftRamp();
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.RemoveCarFromTruck(volvo);
+            carTransporter.RemoveCar(volvo);
         });
     }
 
@@ -93,7 +93,7 @@ public class CarTransporterTest {
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.RemoveCarFromTruck(volvo);
+            carTransporter.RemoveCar(volvo);
         });
     }
 
@@ -108,7 +108,7 @@ public class CarTransporterTest {
         carTransporter.LowerRamp();
 
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.DriveCarOnTruck(volvo);
+            carTransporter.LoadCar(volvo);
         });
     }
 
@@ -119,7 +119,7 @@ public class CarTransporterTest {
 
         carTransporter.LowerRamp();
 
-        carTransporter.DriveCarOnTruck(volvo);
+        carTransporter.LoadCar(volvo);
 
         carTransporter.LiftRamp();
 

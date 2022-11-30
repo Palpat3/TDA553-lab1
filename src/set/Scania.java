@@ -28,9 +28,12 @@ public class Scania extends Truck{
     }
 
     @Override
-    public void startVehicle() {
-        if(platformAngle == 0){
-            super.startVehicle();
+    public void move(){
+        if (platformAngle == 0){
+            super.move();
+        }
+        else{
+            throw new ArithmeticException("Can't drive with the ramp down!");
         }
     }
 }
