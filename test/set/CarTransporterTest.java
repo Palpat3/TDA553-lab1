@@ -82,7 +82,7 @@ public class CarTransporterTest {
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.RemoveCar(volvo);
+            carTransporter.removeCar(volvo);
         });
     }
 
@@ -93,7 +93,7 @@ public class CarTransporterTest {
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.RemoveCar(volvo);
+            carTransporter.removeCar(volvo);
         });
     }
 

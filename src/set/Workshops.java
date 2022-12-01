@@ -1,44 +1,58 @@
 package set;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
-public class Workshops implements Loadable {
+
+public class Workshops{
 
     private int x;
     private int y;
-    private int maxCarsinWorkshop;
-    private int minDistanceToDriveOnTruck = 4;
-    private List<Car> carsInWorkshop = new ArrayList<>(maxCarsinWorkshop);
+    Random r = new Random();
+    private Loadable storage = new CarStorage(r.nextInt(9) + 1);
 
-
-    public void setMaxCarsinWorkshop(int maxCarsinWorkshop) {
-        this.maxCarsinWorkshop = maxCarsinWorkshop;
+    public Workshops(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
-    public boolean IsCarCloseEnough(Car car){
-        int xDiff = x - car.getX();
-        int yDiff = y - car.getY();
-        return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < minDistanceToDriveOnTruck;
+    public int getX() {
+        return x;
     }
 
-    
+    public int getY() {
+        return y;
+    }
+
+    public boolean IsCarCloseEnoughToStore(Car car){
+        int xDiff = this.getX() - car.getX();
+        int yDiff = this.getY() - car.getY();
+        return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < storage.getMaxCarsinStorage();
+    }
+
     public void LoadCar(Car car){
-        if(carsInWorkshop.size() < maxCarsinWorkshop && IsCarCloseEnough(car)){
-            carsInWorkshop.add(car);
+        if(IsCarCloseEnoughToStore(car)){
+            storage.LoadCar(car);
+        }
+        else{
+            throw new ArithmeticException("Car is too far away");
         }
     }
 
     public void RemoveCar(Car car){
-        if(carsInWorkshop.contains(car)){
-            carsInWorkshop.remove(car); 
-            SetPosition(car);
-        }
+        storage.RemoveCar(car);
+        SetPosition(car);
+        
     }
 
     public void SetPosition(Car car){
         car.setX(x);
         car.setY(y);
+        TurnCarAround(car);
+    }
+
+    private void TurnCarAround(Car car){
+        car.turnLeft();
+        car.turnLeft();
     }
 
 }

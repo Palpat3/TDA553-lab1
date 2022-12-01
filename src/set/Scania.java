@@ -33,7 +33,7 @@ public class Scania extends Truck{
             super.move();
         }
         else{
-            throw new ArithmeticException("Can't drive with the ramp down!");
+            throw new ArithmeticException("Can't drive with the ramp angled!");
         }
     }
 }

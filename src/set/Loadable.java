@@ -1,8 +1,10 @@
 package set;
 
+import java.util.List;
+
 public interface Loadable {
-    boolean IsCarCloseEnough(Car car);
+    int getMaxCarsinStorage();
+    List<Car> getCarsInStorage();
     void LoadCar(Car car);
     void RemoveCar(Car car);
-    void SetPosition(Car car);
 }
