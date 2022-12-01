@@ -13,8 +13,8 @@ public class CarStorage implements Loadable{
         this.maxCarsinStorage = maxCarsinStorage;
     }
 
-    public int getMaxCarsinStorage() {
-        return maxCarsinStorage;
+    public int getMinDistanceToStoreCar() {
+        return minDistanceToStoreCar;
     }
 
     public void LoadCar(Car car){

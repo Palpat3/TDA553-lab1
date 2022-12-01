@@ -35,7 +35,7 @@ public class CarTransporter extends Truck{
     public boolean IsCarCloseEnoughToStore(Car car){
         int xDiff = this.getX() - car.getX();
         int yDiff = this.getY() - car.getY();
-        return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < storage.getMaxCarsinStorage();
+        return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < storage.getMinDistanceToStoreCar();
     }
 
     public void LoadCar(Car car){
