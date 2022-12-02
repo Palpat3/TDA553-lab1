@@ -17,20 +17,20 @@ public class CarStorage implements Loadable{
         return minDistanceToStoreCar;
     }
 
-    public void LoadCar(Car car){
+    public void loadCar(Car car){
         if ((carsInStorage.size() < maxCarsinStorage) && !carsInStorage.contains(car)){
             carsInStorage.add(car);
-            car.DriveCarInStorage();
+            car.driveCarInStorage();
         }
         else if(carsInStorage.size() == maxCarsinStorage){
             throw new ArithmeticException("Car transporter already full");
         }
     } 
         
-    public void RemoveCar(Car car){
+    public void removeCar(Car car){
         if (carsInStorage.contains(car)){
             carsInStorage.remove(car);
-            car.DriveCarOutOfStorage();
+            car.driveCarOutOfStorage();
         }
         else if(carsInStorage.size() == 0){
             throw new ArithmeticException("Car transporter is empty");

@@ -15,7 +15,7 @@ public class Scania extends Truck{
         return platformAngle;
     }
 
-    public void ChangePlatformAngle(double newPlatformAngle){
+    public void changePlatformAngle(double newPlatformAngle){
         if(getCurrentSpeed() == 0 && newPlatformAngle <= 70 && newPlatformAngle >= 0){
             platformAngle = newPlatformAngle;
         }

@@ -12,11 +12,11 @@ public class CarTransporter extends Truck{
         super(2, 90, Color.green, "Car Transporter", 0, 0);
     }
 
-    public void LiftRamp(){
+    public void liftRamp(){
         rampUp = true;
     }
 
-    public void LowerRamp(){
+    public void lowerRamp(){
         if (getCurrentSpeed() == 0){
           rampUp = false;  
         }
@@ -30,15 +30,15 @@ public class CarTransporter extends Truck{
         return rampUp;
     }
 
-    public boolean IsCarCloseEnoughToStore(Car car){
+    public boolean isCarCloseEnoughToStore(Car car){
         int xDiff = this.getX() - car.getX();
         int yDiff = this.getY() - car.getY();
         return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < storage.getMinDistanceToStoreCar();
     }
 
-    public void LoadCar(Car car){
-        if (!rampUp && IsCarCloseEnoughToStore(car)){
-            storage.LoadCar(car);
+    public void loadCar(Car car){
+        if (!rampUp && isCarCloseEnoughToStore(car)){
+            storage.loadCar(car);
         }
         else if(rampUp){
             throw new ArithmeticException("Platform has to be down for cars to drive on"); 
@@ -50,20 +50,20 @@ public class CarTransporter extends Truck{
 
     public void removeCar(Car car){
         if (!rampUp){
-            storage.RemoveCar(car);
-            SetCarInSameDirection(car);
+            storage.removeCar(car);
+            setCarInSameDirection(car);
         }
         else if(rampUp){
             throw new ArithmeticException("Platform has to be down for cars to drive off");
         }
     }
     
-    private void SetPosition(Car car){
+    private void setPosition(Car car){
         car.setX(getX());
         car.setY(getY());
     }
 
-    private void SetCarInSameDirection(Car car){
+    private void setCarInSameDirection(Car car){
         for(int i = 0; i < 3; i++){
             if(car.getDirection() == this.getDirection()){
                 break;
@@ -80,7 +80,7 @@ public class CarTransporter extends Truck{
         if (rampUp){
             super.move();
             for(Car car : storage.getCarsInStorage()){
-               SetPosition(car); 
+               setPosition(car); 
             }
         }
         else{

@@ -8,7 +8,7 @@ public class CarTransporterTest {
     public void Ramp_can_be_down_if_CarTransporter_is_stationairy(){
         CarTransporter carTransporter = new CarTransporter();
         
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
         assertFalse(carTransporter.isRampUp());
     }
@@ -17,7 +17,7 @@ public class CarTransporterTest {
     public void CarTransporter_can_not_move_when_ramp_is_down(){
         CarTransporter carTransporter = new CarTransporter();
         
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
         assertThrows(ArithmeticException.class, () ->{
             carTransporter.move();
@@ -31,7 +31,7 @@ public class CarTransporterTest {
         carTransporter.setCurrentSpeed(5);
 
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.LowerRamp();
+            carTransporter.lowerRamp();
         });
     }
 
@@ -42,7 +42,7 @@ public class CarTransporterTest {
         
         
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.LoadCar(volvo);
+            carTransporter.loadCar(volvo);
         });
     }
 
@@ -56,16 +56,16 @@ public class CarTransporterTest {
         Volvo240 volvo4 = new Volvo240();
         Volvo240 volvo5 = new Volvo240();
 
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
-        carTransporter.LoadCar(volvo);
-        carTransporter.LoadCar(volvo1);
-        carTransporter.LoadCar(volvo2);
-        carTransporter.LoadCar(volvo3);
-        carTransporter.LoadCar(volvo4);
+        carTransporter.loadCar(volvo);
+        carTransporter.loadCar(volvo1);
+        carTransporter.loadCar(volvo2);
+        carTransporter.loadCar(volvo3);
+        carTransporter.loadCar(volvo4);
 
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.LoadCar(volvo5);
+            carTransporter.loadCar(volvo5);
         });
     }
 
@@ -74,11 +74,11 @@ public class CarTransporterTest {
         CarTransporter carTransporter = new CarTransporter();
         Volvo240 volvo = new Volvo240();
 
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
-        carTransporter.LoadCar(volvo);
+        carTransporter.loadCar(volvo);
 
-        carTransporter.LiftRamp();
+        carTransporter.liftRamp();
         
         
         assertThrows(ArithmeticException.class, () ->{
@@ -105,10 +105,10 @@ public class CarTransporterTest {
         volvo.setCurrentSpeed(50);
         volvo.move();
 
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
         assertThrows(ArithmeticException.class, () ->{
-            carTransporter.LoadCar(volvo);
+            carTransporter.loadCar(volvo);
         });
     }
 
@@ -117,11 +117,11 @@ public class CarTransporterTest {
         CarTransporter carTransporter = new CarTransporter();
         Volvo240 volvo = new Volvo240();
 
-        carTransporter.LowerRamp();
+        carTransporter.lowerRamp();
 
-        carTransporter.LoadCar(volvo);
+        carTransporter.loadCar(volvo);
 
-        carTransporter.LiftRamp();
+        carTransporter.liftRamp();
 
         carTransporter.startVehicle();
         carTransporter.gas(0.5);

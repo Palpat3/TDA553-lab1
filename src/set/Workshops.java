@@ -23,34 +23,34 @@ public class Workshops{
         return y;
     }
 
-    public boolean IsCarCloseEnoughToStore(Car car){
+    public boolean isCarCloseEnoughToStore(Car car){
         int xDiff = this.getX() - car.getX();
         int yDiff = this.getY() - car.getY();
         return Math.sqrt(Math.pow(xDiff, 2) + (Math.pow(yDiff, 2))) < storage.getMinDistanceToStoreCar();
     }
 
-    public void LoadCar(Car car){
-        if(IsCarCloseEnoughToStore(car)){
-            storage.LoadCar(car);
+    public void loadCar(Car car){
+        if(isCarCloseEnoughToStore(car)){
+            storage.loadCar(car);
+            setPosition(car);
         }
         else{
             throw new ArithmeticException("Car is too far away");
         }
     }
 
-    public void RemoveCar(Car car){
-        storage.RemoveCar(car);
-        SetPosition(car);
+    public void removeCar(Car car){
+        storage.removeCar(car);
+        turnCarAround(car);
         
     }
 
-    public void SetPosition(Car car){
+    private void setPosition(Car car){
         car.setX(x);
         car.setY(y);
-        TurnCarAround(car);
     }
 
-    private void TurnCarAround(Car car){
+    private void turnCarAround(Car car){
         car.turnLeft();
         car.turnLeft();
     }

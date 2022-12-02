@@ -12,7 +12,7 @@ public class ScaniaTest {
         
 
         assertThrows(ArithmeticException.class, () ->{
-            scania.ChangePlatformAngle(50);
+            scania.changePlatformAngle(50);
         });
     }
 
@@ -22,7 +22,7 @@ public class ScaniaTest {
         
 
         assertThrows(IllegalArgumentException.class, () ->{
-            scania.ChangePlatformAngle(80);
+            scania.changePlatformAngle(80);
         });
     }
 
@@ -32,7 +32,7 @@ public class ScaniaTest {
         
 
         assertThrows(IllegalArgumentException.class, () ->{
-            scania.ChangePlatformAngle(-5);
+            scania.changePlatformAngle(-5);
         });
     }
 }

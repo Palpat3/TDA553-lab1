@@ -10,11 +10,11 @@ public abstract class Car extends Vehicle{
         super(nrDoors, enginePower, color, modelName, x, y);
     }
 
-    public void DriveCarInStorage(){
+    public void driveCarInStorage(){
         carInStorage = true;
     }
 
-    public void DriveCarOutOfStorage(){
+    public void driveCarOutOfStorage(){
         carInStorage = false;
     }
 
@@ -26,6 +26,20 @@ public abstract class Car extends Vehicle{
         else{
             throw new ArithmeticException("Can't move the car while in storage");
         }
+    }
+
+    @Override
+    public void gas(double amount){
+        if(!carInStorage){
+            super.gas(amount);
+        }
+        else{
+            throw new ArithmeticException("Can't gas the car while in storage");
+        }
+    }
+
+    public boolean isCarInStorage() {
+        return carInStorage;
     }
 
     
