@@ -1,4 +1,4 @@
 # TDA553-lab1
-Mandus Högberg\n
-Max Dreifeldt\n
+Mandus Högberg      
+Max Dreifeldt   
 Emil Andersson
