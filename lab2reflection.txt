@@ -1,0 +1,15 @@
+Your design probably has a type called something like Car or Vehicle that is a supertype to both Volvo and Scania. What is the contract for gas() and brake() in this type? Do the implementations of gas() and brake() in both Volvo and Scania follow this contract? Does your design follow the Liskov Substitution Principle?
+
+The contract for gas in Vehicle is "A method that increases the speed by a certain amount, the parameter amount has to be within 0 and 1 or else it throws IllegalArgumentException". The contract for brake in Vehicle is "A method that decreases the speed by a certain amount, the parameter amount has to be within 0 and 1 or else it throws IllegalArgumentException". The implementations follow the contract since they are delegated from the car class. The design also follows the Liskov Substitution Principle since everytime we override a method we delegate it back to the superclass so the contract only gets stronger in the subclasses.
+
+
+
+How did you handle duplicated code between Scania, the car transporters and the repair shops? Explain how you decided when to use subclassing and when touse composition and delegation.
+
+The duplicated code between Scania and car transporters is stored in the Truck class since that is the only thing they have in common. Both Scania and car transporter has a ramp/platform but due to their signature we chose not to create a separate class or interface for ramps. The duplicated code between car transporters and repair shops were solved by creating a class called "CarStorage" which handles all the functionality related to storing cars, the car transporters and repair shops then delegate all calls related to storing cars to this class.
+
+
+
+Did you need to modify the design from lab 1 in order to make these extensions? If so, how could you have noticed that your design from Lab 1 did not followthe Open-Closed Principle before you started working on Lab 2?
+
+Yes we had to modify our design. We could have noticed we did not follow the OCP when the only way to create an engine driven vehicle was by making it a subclass to car. As a result we had to move a majority of the engine related functionality to the Vehicle class. A possible future problem would be if we were to create a vehicle without an engine. This would force us to create an "EngineVehicle" class containing all functionality relating to engine with Vehicle now only containing methods relating to position and colors etc.
