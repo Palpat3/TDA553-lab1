@@ -20,37 +20,27 @@ public class CarController {
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
 
+    private VehicleModel model;
+
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Vehicle> cars = new ArrayList<>();
 
     //methods:
-
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
-        cc.cars.add(new Scania());
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
-    }
+    public CarController(VehicleModel model){
+        this.model = model;
+    } 
+    
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
+            for (Vehicle vehicle : model.getVehicleList()) {
+                vehicle.move();
+                int x = (int) Math.round(vehicle.getX());
+                int y = (int) Math.round(vehicle.getY());
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -58,12 +48,12 @@ public class CarController {
         }
     }
 
+
+    public void start(){
+        timer.start();
+    }
     // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle car : cars
-                ) {
-            car.gas(gas);
-        }
+    public void gas(int amount) {
+        model.gas(amount);
     }
 }
