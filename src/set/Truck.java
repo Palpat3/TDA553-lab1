@@ -8,7 +8,7 @@ public abstract class Truck extends Vehicle {
         super(nrDoors, enginePower, color, modelName, x, y);
     }
 
-    protected double speedFactor(){
+    public double speedFactor(){
         return getEnginePower() * 0.01;
     }
 }

@@ -11,7 +11,7 @@ public abstract class Vehicle implements Movable {
     private String modelName;
     private int x;
     private int y;
-    private int direction = 0;
+    private int direction = 1;
     
 
 
