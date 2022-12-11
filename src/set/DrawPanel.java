@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
     Point saabPoint = new Point();
 
-    ArrayList<Point> carPoints = new ArrayList<>();
+    private ArrayList<Point> pointList = new ArrayList();
 
     // TODO: Make this genereal for all cars
     void moveit(int x, int y){
@@ -41,10 +41,20 @@ public class DrawPanel extends JPanel{
     }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<Vehicle> vehicles) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+
+        int startY = 0;
+
+        for (Vehicle vehicle : vehicles){
+
+            pointList.add(new Point(0,startY));
+            vehicle.setY(startY);
+            startY += 100;
+
+        
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -60,7 +70,7 @@ public class DrawPanel extends JPanel{
         } catch (IOException ex)
         {
             ex.printStackTrace();
-        }
+        }}
 
     }
 

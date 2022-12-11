@@ -23,7 +23,7 @@ public class CarController {
     private VehicleModel model;
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    public CarView frame;
     // A list of cars, modify if needed
 
     //methods:
@@ -48,6 +48,9 @@ public class CarController {
         }
     }
 
+    public CarView getFrame(){
+        return frame;
+    }
 
     public void start(){
         timer.start();
