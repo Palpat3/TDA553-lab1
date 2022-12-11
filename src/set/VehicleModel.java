@@ -15,8 +15,8 @@ public class VehicleModel {
 
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles
-                ) {
+        for (Vehicle vehicle : vehicles)
+        {
             vehicle.gas(gas);
         }
     }
