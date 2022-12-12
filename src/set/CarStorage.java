@@ -18,9 +18,10 @@ public class CarStorage implements Loadable{
     }
 
     public void loadCar(Car car){
-        if ((carsInStorage.size() < maxCarsinStorage) && !carsInStorage.contains(car)){
+        if ((carsInStorage.size() < maxCarsinStorage) && !car.isCarInStorage()){
             carsInStorage.add(car);
             car.driveCarInStorage();
+            car.stopVehicle();
         }
         else if(carsInStorage.size() == maxCarsinStorage){
             throw new ArithmeticException("Car transporter already full");
