@@ -110,6 +110,8 @@ public class CarView extends JFrame{
             }
         });
 
+        
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -121,5 +123,13 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void update(Vehicle vehicle){
+        int x = (int) Math.round(vehicle.getX());
+        int y = (int) Math.round(vehicle.getY());
+        drawPanel.moveit(x, y, vehicleC.getVehicleList().indexOf(vehicle));
+        // repaint() calls the paintComponent method of the panel
+        drawPanel.repaint();
     }
 }

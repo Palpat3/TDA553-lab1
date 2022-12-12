@@ -9,13 +9,13 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private Color color;
     private String modelName;
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private int direction = 1;
     
 
 
-    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y){
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, double x, double y){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -41,19 +41,19 @@ public abstract class Vehicle implements Movable {
         return modelName;
     }
 
-    protected int getX(){
+    protected double getX(){
         return x;
     }
 
-    protected int getY(){
+    protected double getY(){
         return y;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
@@ -86,16 +86,16 @@ public abstract class Vehicle implements Movable {
     public void move(){
         directionConverter();
         if (direction == 0){
-            y += Math.round(this.currentSpeed);
+            y += this.currentSpeed;
         }
         else if(direction == 1){
-            x += Math.round(this.currentSpeed);
+            x += this.currentSpeed;
         }
         else if(direction == 2){
-            y -= Math.round(this.currentSpeed);
+            y -= this.currentSpeed;
         }
         else if(direction == 3){
-            x -= Math.round(this.currentSpeed);
+            x -= this.currentSpeed;
         }
     }
 
